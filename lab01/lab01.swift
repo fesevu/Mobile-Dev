@@ -130,3 +130,8 @@ func greet(name: String, day: String) -> String {
           return "Hello \(name), today is \(day)."
 }
 greet(name: "Bob", day: "Tuesday")
+
+// func greet(_ name: String, on day: String) -> String {
+// return "Hello \(name), today is \(day)."
+// }
+// greet("John", on: "Wednesday")
