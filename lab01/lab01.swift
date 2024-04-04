@@ -16,6 +16,12 @@ let widthLabel = label + String(width)
 let name = "Pavel"
 let hello:String = "Hello, \(name)"
 
+var welcome = "hello"
+welcome.insert("!", at: welcome.endIndex)
+// welcome теперь равен "hello!"
+welcome.insert(contentsOf:" there", at: welcome.index(before: welcome.endIndex))
+// welcome теперь равен "hello there!”
+
 let name = "Многострочные литералы строк"
 
 //Отступы каждой отдельной строчкистроки должны совпадать с отступом закрывающей тройки двойных кавычек.
@@ -65,6 +71,21 @@ print(teamScore)
 //ошибка
 //if teamScore
 
+func greet(person: [String: String]) {
+guard let name = person["name"] else {
+return
+}
+print("Привет \(name)!")
+guard let location = person["location"] else {
+print("Надеюсь у тебя там хорошая погода.")
+return
+}
+print("Надеюсь в \(location) хорошая погода.")
+}
+greet(person: ["name": "John"])
+// Выведет "Привет John!"
+// Выведет "Надеюсь у тебя там хорошая погода."
+
 //опицональные значения
 var optionalString: String? = "Hello"
 print(optionalString == nil)
@@ -91,6 +112,21 @@ switch vegetable {
           default:
                     print("Everything tastes good in soup.")
 }
+
+let somePoint = (1, 1)
+switch somePoint {
+          case (0, 0):
+                    print("\(somePoint) is at the origin")
+          case (_, 0):
+                    print("\(somePoint) is on the x-axis")
+          case (0, _):
+                    print("\(somePoint) is on the y-axis")
+          case (-2...2, -2...2):
+                    print("\(somePoint) is inside the box")
+          default:
+                    print("\(somePoint) is outside of the box")
+}
+// Выведет "(1, 1) is inside the box"
 
 let interestingNumbers = [
 "Prime": [2, 3, 5, 7, 11, 13],
@@ -135,3 +171,43 @@ greet(name: "Bob", day: "Tuesday")
 // return "Hello \(name), today is \(day)."
 // }
 // greet("John", on: "Wednesday")
+
+//func calculateStatistics(scores: [Int]) -> (min: Int, max: Int, sum: Int) 
+
+func makeIncrementer() -> ((Int) -> Int) {
+          func addOne(number: Int) -> Int {
+                    return 1 + number
+          }
+          return addOne
+}
+var increment = makeIncrementer()
+increment(7) //makeIncrementer()(7)
+
+func hasAnyMatches(list: [Int], condition: (Int) -> Bool) -> Bool {
+          for item in list {
+                    if condition(item) {
+                              return true
+                    }
+          }
+          return false
+}
+
+func lessThanTen(number: Int) -> Bool {
+          return number < 10
+}
+var numbers = [20, 19, 7, 12]
+hasAnyMatches(list: numbers, condition: lessThanTen)
+
+//({})
+
+numbers.map({ (number: Int) -> Int in
+                    let result = 3 * number
+                    return result
+})
+
+//если тип очевиден можно пропустить и тип параметра и тип возвращаемый а замыкание неявно возвращает значение единсвтенного выражения если оператор один
+let mappedNumbers = numbers.map({ number in 3 * number })
+print(mappedNumbers)
+
+let sortedNumbers = numbers.sorted { $0 > $1 }
+print(sortedNumbers)
