@@ -5,6 +5,7 @@ print("Hello, world!")
 
 var myVariable = 42 //переменная
 myVariable = 50
+var max = UInt32.max
 let myConstant = 42 //константа
 let explicitDouble: Double //обьвление с указанием типа данных
 explicitDouble = 45
@@ -17,7 +18,7 @@ let name = "Pavel"
 let hello:String = "Hello, \(name)"
 
 var welcome = "hello"
-welcome.insert("!", at: welcome.endIndex)
+welcome.insert("!", at: welcome.startIndex)
 // welcome теперь равен "hello!"
 welcome.insert(contentsOf:" there", at: welcome.index(before: welcome.endIndex))
 // welcome теперь равен "hello there!”
@@ -55,6 +56,12 @@ let emptyDictionary = [String: Float]()
 shoppingList = []
 occupations = [:]
 
+let tuple = ("red", 5, "Kirill")
+
+var (color, _, name) = tuple
+
+print(String(color) + " " + String(name))
+
 
 //циклы и условия
 let individualScores = [75, 43, 103, 87, 12]
@@ -72,16 +79,20 @@ print(teamScore)
 //if teamScore
 
 func greet(person: [String: String]) {
-guard let name = person["name"] else {
-return
+          guard let name = person["name"] else {
+                    return
+          }
+
+          print("Привет \(name)!")
+
+          guard let location = person["location"] else {
+                    print("Надеюсь у тебя там хорошая погода.")
+                    return
+          }
+
+          print("Надеюсь в \(location) хорошая погода.")
 }
-print("Привет \(name)!")
-guard let location = person["location"] else {
-print("Надеюсь у тебя там хорошая погода.")
-return
-}
-print("Надеюсь в \(location) хорошая погода.")
-}
+
 greet(person: ["name": "John"])
 // Выведет "Привет John!"
 // Выведет "Надеюсь у тебя там хорошая погода."

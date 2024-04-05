@@ -20,7 +20,7 @@ struct NeuralNetwork {
     }
 }
 
-// Создание модели
+
 var model = NeuralNetwork(weight: 1)
 
 // Обучение модели на нескольких примерах
@@ -31,7 +31,7 @@ for _ in 1...1000 {
     model.train(input: input, target: target, learningRate: 0.01)
 }
 
-// Пример использования обученной модели
+
 let input = 5.5
 let predictedValue = model.predict(input: input)
 print("Предсказанное значение для \(input): \(predictedValue)")
