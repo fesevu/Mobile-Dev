@@ -34,7 +34,7 @@ print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 //тип значений
 //классы не получили по элементного инициализатора
 let vga = Resolution(width: 640, height: 480)
-let vga = Resolution
+var cinem = vga
 cinema.width = 2048
 print("cinema is now \(cinema.width) pixels wide")
 // Выведет "cinema is now 2048 pixels wide"

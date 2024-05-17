@@ -59,7 +59,16 @@ struct Model {
                                         } else if playerChar == char && j != i {
                                                   guessArray[j] = 1
                                         }
-                              } 
+                              }
+                              
+                              //буквы нет в слове
+                              if (guessArray[j] == 0) {
+                                        if usedLetters == nil {
+                                                  usedLetters = [playerChar]
+                                        } else {
+                                                  usedLetters!.append(playerChar)
+                                        }
+                              }
                     }
 
                     return guessArray
